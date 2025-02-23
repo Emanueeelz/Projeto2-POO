@@ -1,0 +1,90 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Casos Investigativos</h2>
+
+  <div class="card mb-4">
+    <div class="card-body">
+      <h3 class="card-title">Adicionar Novo Caso</h3>
+      <form (ngSubmit)="adicionarCaso()">
+        <div class="mb-3">
+          <label for="titulo" class="form-label">Título</label>
+          <input
+            type="text"
+            class="form-control"
+            id="titulo"
+            [(ngModel)]="novoCaso.titulo"
+            name="titulo"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="descricao" class="form-label">Descrição</label>
+          <textarea
+            class="form-control"
+            id="descricao"
+            [(ngModel)]="novoCaso.descricao"
+            name="descricao"
+            required
+          ></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="investigadorNome" class="form-label">Investigador</label>
+          <input
+            type="text"
+            class="form-control"
+            id="investigadorNome"
+            [(ngModel)]="novoCaso.investigador.nome"
+            name="investigadorNome"
+            placeholder="Nome do Investigador"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="investigadorIdade" class="form-label">Idade do investigador</label>
+          <input
+            type="text"
+            class="form-control"
+            id="investigadorIdade"
+            [(ngModel)]="novoCaso.investigador.idade"
+            name="investigadorIdade"
+            placeholder="Idade do Investigador"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="investigadorIdade" class="form-label">Número de identificação</label>
+          <input  
+            type="text"
+            class="form-control"
+            id="investigadorResponsavel"
+            [(ngModel)]="novoCaso.investigador.numeroIdentificacao"
+            name="investigadorResponsavel"
+            placeholder="Número de identificação do investigador responsável pelo caso"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="investigadorIdade" class="form-label">CPF do investigador</label>
+          <input
+            type="text"
+            class="form-control"
+            id="investigadorCPF"
+            [(ngModel)]="novoCaso.investigador.cpf"
+            name="investigadorCPF"
+            placeholder="CPF do investigador"
+            required
+          />
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Adicionar Caso</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="list-group">
+    <div *ngFor="let caso of casos" class="list-group-item mb-3">
+      <h4 class="mb-1">{{ caso.titulo }}</h4>
+      <p class="mb-1">{{ caso.descricao }}</p>
+      <small class="text-muted">Investigador Responsável: {{ caso.investigadorResponsavel.apresentar() }}</small>
+    </div>
+  </div>
+</div>
